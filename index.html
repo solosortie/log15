@@ -14,11 +14,11 @@
     <link rel="shortcut icon" href="/favicon-09/favicon.ico">
     <style>
         :root {
-            --bg: #121212;       /* Matte Black */
-            --text: #d4d4d8;     /* Aged Newsprint / Ash */
-            --muted: #52525b;    /* Tarnished Silver */
-            --accent: #a1a1aa;   /* Typewriter Grey */
-            --card: #1c1c1e;     /* Deep Charcoal */
+            --bg: #1a1412;       /* Midnight / Dark Wood */
+            --text: #d7ccc8;     /* Warm Ash / Faded Paper */
+            --muted: #8d6e63;    /* Faded Clay */
+            --accent: #e64a19;   /* Glowing Saffron / Embers */
+            --card: #261c18;     /* Deep Roasted Brown */
             --font-ui: 'Quicksand', sans-serif;
             --font-ink: 'Kalam', cursive;
         }
@@ -27,9 +27,10 @@
 
         body {
             background-color: var(--bg);
+            /* Subtle ember glow in the background */
             background-image:
-                radial-gradient(ellipse 80% 60% at 50% 40%, rgba(82,82,91,0.08) 0%, transparent 70%),
-                radial-gradient(ellipse 60% 40% at 50% 80%, rgba(63,63,70,0.05) 0%, transparent 60%);
+                radial-gradient(ellipse 80% 60% at 50% 40%, rgba(230,74,25,0.03) 0%, transparent 70%),
+                radial-gradient(ellipse 60% 40% at 50% 80%, rgba(141,110,99,0.05) 0%, transparent 60%);
             position: relative;
             color: var(--text);
             font-family: var(--font-ui);
@@ -47,7 +48,7 @@
             inset: 0;
             pointer-events: none;
             z-index: 0;
-            opacity: 0.04;
+            opacity: 0.05;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
             background-size: 180px 180px;
         }
@@ -66,9 +67,13 @@
             min-height: 100vh;
             transition: opacity 0.5s ease;
         }
+        .jharokha-icon {
+            margin-bottom: 1.5rem;
+            opacity: 0.7;
+        }
         #lock-screen h1 {
             font-size: 1.4rem;
-            font-weight: 300;
+            font-weight: 600;
             letter-spacing: 8px;
             color: var(--muted);
             margin-bottom: 2.5rem;
@@ -107,19 +112,25 @@
             align-items: center;
             margin-bottom: 3rem;
             padding-bottom: 1rem;
-            border-bottom: 1px solid rgba(82,82,91,0.2);
+            border-bottom: 1px solid rgba(141,110,99,0.3);
+            position: relative;
+        }
+        .header-title-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
         header h2 {
             font-size: 1rem;
-            font-weight: 400;
+            font-weight: 600;
             letter-spacing: 5px;
             color: var(--muted);
             text-transform: uppercase;
         }
         .add-btn {
             background: transparent;
-            border: 1px solid rgba(82,82,91,0.5);
-            color: var(--muted);
+            border: 1px solid rgba(141,110,99,0.6);
+            color: var(--text);
             font-family: var(--font-ui);
             font-size: 0.8rem;
             font-weight: 600;
@@ -149,8 +160,30 @@
             background: var(--card);
             border-radius: 14px;
             padding: 1.8rem;
-            border: 1px solid rgba(82,82,91,0.15);
+            border: 1px solid rgba(141,110,99,0.15);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            position: relative;
         }
+        /* Corner accent for composer */
+        .composer::before {
+            content: '';
+            position: absolute;
+            top: 10px; left: 10px;
+            width: 15px; height: 15px;
+            border-top: 2px solid rgba(141,110,99,0.3);
+            border-left: 2px solid rgba(141,110,99,0.3);
+            pointer-events: none;
+        }
+        .composer::after {
+            content: '';
+            position: absolute;
+            bottom: 10px; right: 10px;
+            width: 15px; height: 15px;
+            border-bottom: 2px solid rgba(141,110,99,0.3);
+            border-right: 2px solid rgba(141,110,99,0.3);
+            pointer-events: none;
+        }
+
         .composer input[type="text"],
         .composer textarea {
             width: 100%;
@@ -163,10 +196,14 @@
         .composer input[type="text"] {
             font-family: var(--font-ui);
             font-size: 1.3rem;
-            font-weight: 500;
-            border-bottom: 1px solid rgba(82,82,91,0.3);
+            font-weight: 600;
+            border-bottom: 1px solid rgba(141,110,99,0.3);
             padding-bottom: 0.6rem;
             margin-bottom: 1.4rem;
+        }
+        .composer input[type="text"]::placeholder,
+        .composer textarea::placeholder {
+            color: rgba(141,110,99,0.6);
         }
         .composer textarea {
             font-family: var(--font-ink);
@@ -196,7 +233,7 @@
             width: 24px;
             height: 24px;
             border-radius: 50%;
-            border: 1.5px solid rgba(82,82,91,0.4);
+            border: 1.5px solid rgba(141,110,99,0.4);
             background: transparent;
             cursor: pointer;
             font-family: var(--font-ui);
@@ -214,7 +251,7 @@
             background: var(--accent);
             border-color: var(--accent);
             color: var(--bg);
-            box-shadow: 0 0 8px rgba(161,161,170,0.3);
+            box-shadow: 0 0 10px rgba(230,74,25,0.4);
         }
 
         .composer-actions { text-align: right; }
@@ -231,7 +268,7 @@
             cursor: pointer;
             transition: opacity 0.2s, transform 0.15s;
         }
-        .record-btn:hover { opacity: 0.8; transform: translateY(-1px); }
+        .record-btn:hover { opacity: 0.85; transform: translateY(-1px); }
         .record-btn:active { transform: translateY(0); }
         .record-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 
@@ -254,8 +291,8 @@
             background: linear-gradient(
                 to bottom,
                 transparent 0%,
-                rgba(82,82,91,0.3) 4%,
-                rgba(82,82,91,0.3) 96%,
+                rgba(141,110,99,0.3) 4%,
+                rgba(141,110,99,0.3) 96%,
                 transparent 100%
             );
         }
@@ -291,8 +328,8 @@
             top: 50%;
             left: calc(50% + 22px);
             transform: translateY(-50%) translateX(8px);
-            background: rgba(28,28,30,0.96);
-            border: 1px solid rgba(255,255,255,0.07);
+            background: rgba(38,28,24,0.96);
+            border: 1px solid rgba(141,110,99,0.2);
             border-radius: 10px;
             padding: 0.6rem 0.9rem;
             min-width: 155px;
@@ -304,6 +341,7 @@
             z-index: 20;
             white-space: nowrap;
             backdrop-filter: blur(8px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
         }
         .tl-node:hover .tl-preview {
             opacity: 1;
@@ -340,7 +378,7 @@
             display: none;
             position: fixed;
             inset: 0;
-            background: rgba(18,18,18,0.88);
+            background: rgba(18,13,11,0.9);
             z-index: 50;
             align-items: center;
             justify-content: center;
@@ -365,9 +403,10 @@
             max-width: 600px;
             max-height: 85vh;
             overflow-y: auto;
-            border: 1px solid rgba(82,82,91,0.2);
+            border: 1px solid rgba(141,110,99,0.25);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
             scrollbar-width: thin;
-            scrollbar-color: rgba(82,82,91,0.4) transparent;
+            scrollbar-color: rgba(141,110,99,0.3) transparent;
             animation: slideup 0.32s cubic-bezier(0.34,1.2,0.64,1) forwards;
         }
 
@@ -396,7 +435,7 @@
             height: 3px;
             flex: 1;
             border-radius: 2px;
-            background: rgba(82,82,91,0.25);
+            background: rgba(141,110,99,0.2);
         }
 
         .view-date {
@@ -417,7 +456,7 @@
         .view-content {
             font-family: var(--font-ink);
             font-size: 1.2rem;
-            color: #c4c4c8;
+            color: #bfaea6;
             white-space: pre-line;
             line-height: 1.9;
             margin-bottom: 2rem;
@@ -427,12 +466,12 @@
             justify-content: flex-end;
             gap: 0.6rem;
             padding-top: 1.2rem;
-            border-top: 1px solid rgba(82,82,91,0.2);
+            border-top: 1px solid rgba(141,110,99,0.2);
         }
         .view-close-btn {
             margin-right: auto;
             background: transparent;
-            border: 1px solid rgba(82,82,91,0.4);
+            border: 1px solid rgba(141,110,99,0.4);
             color: var(--muted);
             font-family: var(--font-ui);
             font-size: 0.72rem;
@@ -444,7 +483,7 @@
             text-transform: uppercase;
             transition: all 0.2s;
         }
-        .view-close-btn:hover { border-color: var(--accent); color: var(--text); }
+        .view-close-btn:hover { border-color: var(--text); color: var(--text); }
         .entry-edit-btn, .entry-delete-btn {
             background: transparent;
             font-family: var(--font-ui);
@@ -457,17 +496,17 @@
             transition: all 0.2s;
             text-transform: uppercase;
         }
-        .entry-edit-btn { border: 1px solid rgba(161,161,170,0.5); color: var(--accent); }
-        .entry-edit-btn:hover { background: rgba(161,161,170,0.1); }
-        .entry-delete-btn { border: 1px solid rgba(239,68,68,0.4); color: #ef4444; }
-        .entry-delete-btn:hover { background: rgba(239,68,68,0.1); }
+        .entry-edit-btn { border: 1px solid rgba(230,74,25,0.4); color: var(--accent); }
+        .entry-edit-btn:hover { background: rgba(230,74,25,0.1); }
+        .entry-delete-btn { border: 1px solid rgba(211,47,47,0.4); color: #e53935; }
+        .entry-delete-btn:hover { background: rgba(211,47,47,0.1); }
 
         /* ── EDIT MODAL ── */
         #edit-modal {
             display: none;
             position: fixed;
             inset: 0;
-            background: rgba(18,18,18,0.9);
+            background: rgba(18,13,11,0.9);
             z-index: 100;
             align-items: center;
             justify-content: center;
@@ -487,7 +526,8 @@
             max-width: 560px;
             max-height: 90vh;
             overflow-y: auto;
-            border: 1px solid rgba(82,82,91,0.25);
+            border: 1px solid rgba(141,110,99,0.25);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
             animation: slideup 0.28s cubic-bezier(0.34,1.2,0.64,1) forwards;
         }
         .modal-label {
@@ -502,10 +542,11 @@
             width: 100%;
             background: transparent;
             border: none;
-            border-bottom: 1px solid rgba(82,82,91,0.4);
+            border-bottom: 1px solid rgba(141,110,99,0.4);
             color: var(--text);
             font-family: var(--font-ui);
             font-size: 1rem;
+            font-weight: 600;
             padding: 0.4rem 0;
             outline: none;
             margin-bottom: 1.4rem;
@@ -513,8 +554,8 @@
         }
         #edit-content {
             width: 100%;
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(82,82,91,0.3);
+            background: rgba(0,0,0,0.15);
+            border: 1px solid rgba(141,110,99,0.3);
             border-radius: 8px;
             color: var(--text);
             font-family: var(--font-ink);
@@ -539,7 +580,7 @@
         }
         .modal-cancel-btn {
             background: transparent;
-            border: 1px solid rgba(82,82,91,0.5);
+            border: 1px solid rgba(141,110,99,0.5);
             color: var(--muted);
             font-family: var(--font-ui);
             font-size: 0.82rem;
@@ -563,7 +604,7 @@
             cursor: pointer;
             transition: opacity 0.2s;
         }
-        .modal-save-btn:hover { opacity: 0.8; }
+        .modal-save-btn:hover { opacity: 0.85; }
 
         /* ── TOAST ── */
         #toast {
@@ -571,14 +612,15 @@
             bottom: 2rem;
             left: 50%;
             transform: translateX(-50%) translateY(10px);
-            background: #27272a;
+            background: var(--card);
             color: var(--text);
             font-family: var(--font-ui);
-            font-size: 0.8rem;
-            font-weight: 500;
-            padding: 0.55rem 1.4rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 0.6rem 1.4rem;
             border-radius: 20px;
-            border: 1px solid rgba(82,82,91,0.3);
+            border: 1px solid rgba(141,110,99,0.3);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.28s ease, transform 0.28s ease;
@@ -586,14 +628,15 @@
             white-space: nowrap;
         }
         #toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
-        #toast.error { border-color: rgba(239,68,68,0.4); color: #ef4444; }
+        #toast.error { border-color: rgba(211,47,47,0.5); color: #e53935; }
 
         .empty-state {
             color: var(--muted);
             font-family: var(--font-ui);
             text-align: center;
             padding: 3rem 0;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            font-weight: 600;
             letter-spacing: 1px;
         }
     </style>
@@ -601,13 +644,24 @@
 <body>
 
     <div id="lock-screen">
+        <svg class="jharokha-icon" width="46" height="60" viewBox="0 0 46 60" fill="none" stroke="var(--muted)" stroke-width="1.5">
+            <path d="M5 60 V28 C5 12, 23 5, 23 5 C23 5, 41 12, 41 28 V60" />
+            <path d="M12 60 V34 C12 22, 23 16, 23 16 C23 16, 34 22, 34 34 V60" />
+            <circle cx="23" cy="48" r="2.5" fill="var(--accent)" stroke="none"/>
+        </svg>
         <h1>LOG IN</h1>
         <input type="password" id="password-input" placeholder="password" autofocus>
     </div>
 
     <div id="journal-container">
         <header>
-            <h2>The Log</h2>
+            <div class="header-title-group">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5">
+                    <path d="M12 2 L15 9 L22 12 L15 15 L12 22 L9 15 L2 12 L9 9 Z" />
+                    <circle cx="12" cy="12" r="2" fill="var(--bg)"/>
+                </svg>
+                <h2>The Log</h2>
+            </div>
             <button class="add-btn" onclick="toggleComposer()">+ Add Entry</button>
         </header>
 
@@ -671,25 +725,25 @@
         const PASSWORD_ENABLED = true;
         const JOURNAL_PASSWORD = "09";
 
-        // ── VINTAGE NOIR MONTH COLORS ──
+        // ── WARM JAIPUR MONTH COLORS (Adjusted for Dark Mode) ──
         const MONTH_COLORS = {
-             1: '39,39,42',     // Jan
-             2: '39,39,42',     // Feb
-             3: '39,39,42',     // Mar
-             4: '63,63,70',     // Apr
-             5: '63,63,70',     // May
-             6: '63,63,70',     // Jun
-             7: '82,82,91',     // Jul
-             8: '82,82,91',     // Aug
-             9: '82,82,91',     // Sep
-            10: '113,113,122',  // Oct
-            11: '113,113,122',  // Nov
-            12: '113,113,122',  // Dec
+             1: '141,110,99',   // Jan: Faded Clay
+             2: '141,110,99',   // Feb: Faded Clay
+             3: '141,110,99',   // Mar: Faded Clay
+             4: '230,74,25',    // Apr: Glowing Saffron
+             5: '230,74,25',    // May: Glowing Saffron
+             6: '230,74,25',    // Jun: Glowing Saffron
+             7: '190,100,70',   // Jul: Warm Rust
+             8: '190,100,70',   // Aug: Warm Rust
+             9: '190,100,70',   // Sep: Warm Rust
+            10: '120,80,60',    // Oct: Deep Earth
+            11: '120,80,60',    // Nov: Deep Earth
+            12: '120,80,60',    // Dec: Deep Earth
         };
 
         function scoreOpacity(score) {
             const s = Math.max(0, Math.min(9, score || 0));
-            return 0.3 + (s / 9) * 0.7;
+            return 0.35 + (s / 9) * 0.65; 
         }
 
         function scoreGlow(score) {
@@ -716,7 +770,7 @@
         function dotGlowStyle(dateStr, score) {
             const { rgb, alpha } = dotColor(dateStr, score);
             const g = scoreGlow(score);
-            const spread = 4 + g * 12;
+            const spread = 4 + g * 14;
             const outer  = 2 + g * 8;
             return `0 0 0 ${Math.round(outer)}px rgba(${rgb},${Math.round(alpha * g * 0.2 * 100)/100}), 0 0 ${Math.round(spread)}px rgba(${rgb},${Math.round(alpha * g * 0.6 * 100)/100})`;
         }
@@ -1001,7 +1055,7 @@
                         revealJournal();
                     } else {
                         passwordInput.value = '';
-                        passwordInput.style.borderColor = '#ef4444';
+                        passwordInput.style.borderColor = '#e53935';
                         setTimeout(() => passwordInput.style.borderColor = 'var(--muted)', 500);
                     }
                 });
