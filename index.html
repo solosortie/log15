@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log-15</title>
+    <title>Log-09</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400&family=Quicksand:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicon-55/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-55/champfavicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-55/favicon-16x16.png">
-    <link rel="manifest" href="/favicon-55/site.webmanifest">
-    <link rel="shortcut icon" href="/favicon-55/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon-09/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-09/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-09/favicon-16x16.png">
+    <link rel="manifest" href="/favicon-09/site.webmanifest">
+    <link rel="shortcut icon" href="/favicon-09/favicon.ico">
     <style>
         :root {
-            --bg: #1a1c1e;
-            --text: #e2e8f0;
-            --muted: #718096;
-            --accent: #a78bfa;
-            --card: #202327;
+            --bg: #121212;       /* Matte Black */
+            --text: #d4d4d8;     /* Aged Newsprint / Ash */
+            --muted: #52525b;    /* Tarnished Silver */
+            --accent: #a1a1aa;   /* Typewriter Grey */
+            --card: #1c1c1e;     /* Deep Charcoal */
             --font-ui: 'Quicksand', sans-serif;
             --font-ink: 'Kalam', cursive;
         }
@@ -27,11 +27,9 @@
 
         body {
             background-color: var(--bg);
-            /* B: radial bloom behind content */
             background-image:
-                radial-gradient(ellipse 80% 60% at 50% 40%, rgba(80,50,140,0.13) 0%, transparent 70%),
-                radial-gradient(ellipse 60% 40% at 50% 80%, rgba(40,60,120,0.08) 0%, transparent 60%);
-            /* A: noise grain overlay via SVG data URI */
+                radial-gradient(ellipse 80% 60% at 50% 40%, rgba(82,82,91,0.08) 0%, transparent 70%),
+                radial-gradient(ellipse 60% 40% at 50% 80%, rgba(63,63,70,0.05) 0%, transparent 60%);
             position: relative;
             color: var(--text);
             font-family: var(--font-ui);
@@ -43,19 +41,17 @@
             overflow-x: hidden;
         }
 
-        /* grain layer */
         body::before {
             content: '';
             position: fixed;
             inset: 0;
             pointer-events: none;
             z-index: 0;
-            opacity: 0.028;
+            opacity: 0.04;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
             background-size: 180px 180px;
         }
 
-        /* everything above grain */
         #lock-screen, #journal-container, #entry-modal, #edit-modal, #toast {
             position: relative;
             z-index: 1;
@@ -111,7 +107,7 @@
             align-items: center;
             margin-bottom: 3rem;
             padding-bottom: 1rem;
-            border-bottom: 1px solid rgba(113,128,150,0.15);
+            border-bottom: 1px solid rgba(82,82,91,0.2);
         }
         header h2 {
             font-size: 1rem;
@@ -122,7 +118,7 @@
         }
         .add-btn {
             background: transparent;
-            border: 1px solid rgba(113,128,150,0.4);
+            border: 1px solid rgba(82,82,91,0.5);
             color: var(--muted);
             font-family: var(--font-ui);
             font-size: 0.8rem;
@@ -153,7 +149,7 @@
             background: var(--card);
             border-radius: 14px;
             padding: 1.8rem;
-            border: 1px solid rgba(113,128,150,0.1);
+            border: 1px solid rgba(82,82,91,0.15);
         }
         .composer input[type="text"],
         .composer textarea {
@@ -168,7 +164,7 @@
             font-family: var(--font-ui);
             font-size: 1.3rem;
             font-weight: 500;
-            border-bottom: 1px solid rgba(113,128,150,0.2);
+            border-bottom: 1px solid rgba(82,82,91,0.3);
             padding-bottom: 0.6rem;
             margin-bottom: 1.4rem;
         }
@@ -181,7 +177,6 @@
             margin-bottom: 1.4rem;
         }
 
-        /* score picker */
         .score-row {
             display: flex;
             align-items: center;
@@ -201,7 +196,7 @@
             width: 24px;
             height: 24px;
             border-radius: 50%;
-            border: 1.5px solid rgba(113,128,150,0.3);
+            border: 1.5px solid rgba(82,82,91,0.4);
             background: transparent;
             cursor: pointer;
             font-family: var(--font-ui);
@@ -219,7 +214,7 @@
             background: var(--accent);
             border-color: var(--accent);
             color: var(--bg);
-            box-shadow: 0 0 8px rgba(167,139,250,0.45);
+            box-shadow: 0 0 8px rgba(161,161,170,0.3);
         }
 
         .composer-actions { text-align: right; }
@@ -259,8 +254,8 @@
             background: linear-gradient(
                 to bottom,
                 transparent 0%,
-                rgba(113,128,150,0.22) 4%,
-                rgba(113,128,150,0.22) 96%,
+                rgba(82,82,91,0.3) 4%,
+                rgba(82,82,91,0.3) 96%,
                 transparent 100%
             );
         }
@@ -276,7 +271,6 @@
         }
         .tl-node:last-child { margin-bottom: 0; }
 
-        /* dot — color & opacity set by JS */
         .tl-dot {
             width: 11px;
             height: 11px;
@@ -292,13 +286,12 @@
             transform: scale(1.8);
         }
 
-        /* hover preview floats right */
         .tl-preview {
             position: absolute;
             top: 50%;
             left: calc(50% + 22px);
             transform: translateY(-50%) translateX(8px);
-            background: rgba(30,33,38,0.96);
+            background: rgba(28,28,30,0.96);
             border: 1px solid rgba(255,255,255,0.07);
             border-radius: 10px;
             padding: 0.6rem 0.9rem;
@@ -320,7 +313,6 @@
             font-size: 1rem;
             font-weight: 700;
             margin-bottom: 0.15rem;
-            /* color set by JS to match dot */
         }
         .tl-preview-score span {
             font-size: 0.7rem;
@@ -348,7 +340,7 @@
             display: none;
             position: fixed;
             inset: 0;
-            background: rgba(8,9,11,0.82);
+            background: rgba(18,18,18,0.88);
             z-index: 50;
             align-items: center;
             justify-content: center;
@@ -366,20 +358,19 @@
             to   { transform: translateY(0);    opacity:1; }
         }
         .entry-modal-box {
-            background: #1e2124;
+            background: var(--card);
             border-radius: 18px;
             padding: 2.2rem 2.4rem;
             width: 100%;
             max-width: 600px;
             max-height: 85vh;
             overflow-y: auto;
-            border: 1px solid rgba(113,128,150,0.12);
+            border: 1px solid rgba(82,82,91,0.2);
             scrollbar-width: thin;
-            scrollbar-color: rgba(113,128,150,0.2) transparent;
+            scrollbar-color: rgba(82,82,91,0.4) transparent;
             animation: slideup 0.32s cubic-bezier(0.34,1.2,0.64,1) forwards;
         }
 
-        /* score badge — color set by JS */
         .view-score-badge {
             display: inline-flex;
             align-items: baseline;
@@ -405,9 +396,8 @@
             height: 3px;
             flex: 1;
             border-radius: 2px;
-            background: rgba(113,128,150,0.18);
+            background: rgba(82,82,91,0.25);
         }
-        .view-score-bar-pip.filled { /* background set by JS */ }
 
         .view-date {
             font-size: 0.68rem;
@@ -427,7 +417,7 @@
         .view-content {
             font-family: var(--font-ink);
             font-size: 1.2rem;
-            color: #b0b9c1;
+            color: #c4c4c8;
             white-space: pre-line;
             line-height: 1.9;
             margin-bottom: 2rem;
@@ -437,12 +427,12 @@
             justify-content: flex-end;
             gap: 0.6rem;
             padding-top: 1.2rem;
-            border-top: 1px solid rgba(113,128,150,0.1);
+            border-top: 1px solid rgba(82,82,91,0.2);
         }
         .view-close-btn {
             margin-right: auto;
             background: transparent;
-            border: 1px solid rgba(113,128,150,0.25);
+            border: 1px solid rgba(82,82,91,0.4);
             color: var(--muted);
             font-family: var(--font-ui);
             font-size: 0.72rem;
@@ -454,7 +444,7 @@
             text-transform: uppercase;
             transition: all 0.2s;
         }
-        .view-close-btn:hover { border-color: var(--muted); color: var(--text); }
+        .view-close-btn:hover { border-color: var(--accent); color: var(--text); }
         .entry-edit-btn, .entry-delete-btn {
             background: transparent;
             font-family: var(--font-ui);
@@ -467,17 +457,17 @@
             transition: all 0.2s;
             text-transform: uppercase;
         }
-        .entry-edit-btn { border: 1px solid rgba(167,139,250,0.4); color: var(--accent); }
-        .entry-edit-btn:hover { background: rgba(167,139,250,0.1); }
-        .entry-delete-btn { border: 1px solid rgba(239,68,68,0.3); color: #ef4444; }
-        .entry-delete-btn:hover { background: rgba(239,68,68,0.08); }
+        .entry-edit-btn { border: 1px solid rgba(161,161,170,0.5); color: var(--accent); }
+        .entry-edit-btn:hover { background: rgba(161,161,170,0.1); }
+        .entry-delete-btn { border: 1px solid rgba(239,68,68,0.4); color: #ef4444; }
+        .entry-delete-btn:hover { background: rgba(239,68,68,0.1); }
 
         /* ── EDIT MODAL ── */
         #edit-modal {
             display: none;
             position: fixed;
             inset: 0;
-            background: rgba(8,9,11,0.85);
+            background: rgba(18,18,18,0.9);
             z-index: 100;
             align-items: center;
             justify-content: center;
@@ -490,21 +480,15 @@
             animation: fadein 0.22s ease forwards;
         }
         .modal-box {
-            background: #22262b;
+            background: var(--card);
             border-radius: 16px;
             padding: 2rem;
             width: 100%;
             max-width: 560px;
             max-height: 90vh;
             overflow-y: auto;
-            border: 1px solid rgba(113,128,150,0.15);
+            border: 1px solid rgba(82,82,91,0.25);
             animation: slideup 0.28s cubic-bezier(0.34,1.2,0.64,1) forwards;
-        }
-        .modal-entry-title {
-            font-size: 1.2rem;
-            font-weight: 500;
-            color: var(--accent);
-            margin-bottom: 1.5rem;
         }
         .modal-label {
             font-size: 0.68rem;
@@ -514,14 +498,14 @@
             text-transform: uppercase;
             margin-bottom: 0.4rem;
         }
-        #edit-date {
+        .modal-input {
             width: 100%;
             background: transparent;
             border: none;
-            border-bottom: 1px solid rgba(113,128,150,0.25);
+            border-bottom: 1px solid rgba(82,82,91,0.4);
             color: var(--text);
             font-family: var(--font-ui);
-            font-size: 0.95rem;
+            font-size: 1rem;
             padding: 0.4rem 0;
             outline: none;
             margin-bottom: 1.4rem;
@@ -529,8 +513,8 @@
         }
         #edit-content {
             width: 100%;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(113,128,150,0.15);
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(82,82,91,0.3);
             border-radius: 8px;
             color: var(--text);
             font-family: var(--font-ink);
@@ -555,7 +539,7 @@
         }
         .modal-cancel-btn {
             background: transparent;
-            border: 1px solid rgba(113,128,150,0.3);
+            border: 1px solid rgba(82,82,91,0.5);
             color: var(--muted);
             font-family: var(--font-ui);
             font-size: 0.82rem;
@@ -565,7 +549,7 @@
             cursor: pointer;
             transition: all 0.2s;
         }
-        .modal-cancel-btn:hover { border-color: var(--muted); color: var(--text); }
+        .modal-cancel-btn:hover { border-color: var(--text); color: var(--text); }
         .modal-save-btn {
             background: var(--accent);
             color: var(--bg);
@@ -587,14 +571,14 @@
             bottom: 2rem;
             left: 50%;
             transform: translateX(-50%) translateY(10px);
-            background: #2d3139;
+            background: #27272a;
             color: var(--text);
             font-family: var(--font-ui);
             font-size: 0.8rem;
             font-weight: 500;
             padding: 0.55rem 1.4rem;
             border-radius: 20px;
-            border: 1px solid rgba(113,128,150,0.15);
+            border: 1px solid rgba(82,82,91,0.3);
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.28s ease, transform 0.28s ease;
@@ -602,7 +586,7 @@
             white-space: nowrap;
         }
         #toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
-        #toast.error { border-color: rgba(239,68,68,0.3); color: #ef4444; }
+        #toast.error { border-color: rgba(239,68,68,0.4); color: #ef4444; }
 
         .empty-state {
             color: var(--muted);
@@ -630,7 +614,7 @@
         <div class="composer-wrapper" id="composer-panel">
             <div class="composer">
                 <input type="text" id="new-title" placeholder="Title" autocomplete="off">
-                <textarea id="new-content" placeholder="Write here champ."></textarea>
+                <textarea id="new-content" placeholder="Write here."></textarea>
                 <div class="score-row">
                     <span class="score-label">Score</span>
                     <div class="score-dots" id="composer-score-dots"></div>
@@ -664,9 +648,10 @@
 
     <div id="edit-modal">
         <div class="modal-box">
-            <div class="modal-entry-title" id="modal-title-display"></div>
+            <div class="modal-label">Title</div>
+            <input type="text" id="edit-title" class="modal-input" autocomplete="off">
             <div class="modal-label">Date</div>
-            <input type="text" id="edit-date" autocomplete="off">
+            <input type="text" id="edit-date" class="modal-input" autocomplete="off">
             <div class="modal-label">Entry</div>
             <textarea id="edit-content"></textarea>
             <div class="modal-score-row">
@@ -684,38 +669,35 @@
 
     <script>
         const PASSWORD_ENABLED = true;
-        const JOURNAL_PASSWORD = "15";
+        const JOURNAL_PASSWORD = "09";
 
-        // ── MONTH COLORS (RGB only, opacity applied via score) ──
+        // ── VINTAGE NOIR MONTH COLORS ──
         const MONTH_COLORS = {
-             1: '96,165,250',   // Jan — cool blue
-             2: '244,114,182',  // Feb — soft pink
-             3: '52,211,153',   // Mar — fresh green
-             4: '251,191,36',   // Apr — amber
-             5: '167,139,250',  // May — purple (unchanged)
-             6: '251,146,60',   // Jun — burnt orange
-             7: '232,121,249',  // Jul — magenta
-             8: '45,212,191',   // Aug — teal
-             9: '248,113,113',  // Sep — muted red
-            10: '163,230,53',   // Oct — lime
-            11: '148,163,184',  // Nov — cool grey
-            12: '103,232,249',  // Dec — icy cyan
+             1: '39,39,42',     // Jan
+             2: '39,39,42',     // Feb
+             3: '39,39,42',     // Mar
+             4: '63,63,70',     // Apr
+             5: '63,63,70',     // May
+             6: '63,63,70',     // Jun
+             7: '82,82,91',     // Jul
+             8: '82,82,91',     // Aug
+             9: '82,82,91',     // Sep
+            10: '113,113,122',  // Oct
+            11: '113,113,122',  // Nov
+            12: '113,113,122',  // Dec
         };
 
-        // score 0–9 → opacity 0.2 to 1.0
         function scoreOpacity(score) {
             const s = Math.max(0, Math.min(9, score || 0));
-            return 0.2 + (s / 9) * 0.8;
+            return 0.3 + (s / 9) * 0.7;
         }
 
-        // score 0–9 → glow spread scale
         function scoreGlow(score) {
             const s = Math.max(0, Math.min(9, score || 0));
             return s / 9;
         }
 
         function monthFromDateStr(dateStr) {
-            // dateStr e.g. "MAY 29, 2026" or "JANUARY 3, 2026"
             const months = {
                 JANUARY:1, FEBRUARY:2, MARCH:3, APRIL:4, MAY:5, JUNE:6,
                 JULY:7, AUGUST:8, SEPTEMBER:9, OCTOBER:10, NOVEMBER:11, DECEMBER:12
@@ -734,12 +716,10 @@
         function dotGlowStyle(dateStr, score) {
             const { rgb, alpha } = dotColor(dateStr, score);
             const g = scoreGlow(score);
-            const spread = 4 + g * 14;
-            const outer  = 2 + g * 10;
-            return `0 0 0 ${Math.round(outer)}px rgba(${rgb},${Math.round(alpha * g * 0.18 * 100)/100}), 0 0 ${Math.round(spread)}px rgba(${rgb},${Math.round(alpha * g * 0.55 * 100)/100})`;
+            const spread = 4 + g * 12;
+            const outer  = 2 + g * 8;
+            return `0 0 0 ${Math.round(outer)}px rgba(${rgb},${Math.round(alpha * g * 0.2 * 100)/100}), 0 0 ${Math.round(spread)}px rgba(${rgb},${Math.round(alpha * g * 0.6 * 100)/100})`;
         }
-
-        // ─────────────────────────────────────────────────
 
         const lockScreen       = document.getElementById('lock-screen');
         const passwordInput    = document.getElementById('password-input');
@@ -756,8 +736,6 @@
         let toastTimer    = null;
         let composerScore = 0;
         let editScore     = 0;
-
-        // ── SCORE PIPS ────────────────────────────────────
 
         function buildScorePips(containerId, onSelect) {
             const container = document.getElementById(containerId);
@@ -787,8 +765,6 @@
             });
         }
 
-        // ── TOAST ─────────────────────────────────────────
-
         function showToast(msg, isError = false) {
             clearTimeout(toastTimer);
             toastEl.textContent = msg;
@@ -797,8 +773,6 @@
             toastEl.classList.add('show');
             toastTimer = setTimeout(() => toastEl.classList.remove('show'), 2800);
         }
-
-        // ── DATA ──────────────────────────────────────────
 
         async function loadTimeline() {
             try {
@@ -888,8 +862,6 @@
             btn.disabled = false;
         }
 
-        // ── ENTRY VIEW MODAL ──────────────────────────────
-
         function openEntryModal(id) {
             const e = allEntries.find(x => x.id === id);
             if (!e) return;
@@ -898,7 +870,6 @@
             const score = e.score || 0;
             const color = dotColor(e.date, score);
 
-            // score badge
             const numEl = document.getElementById('view-score-num');
             numEl.textContent = score;
             numEl.style.color = color.css;
@@ -907,7 +878,6 @@
             document.getElementById('view-title').textContent   = e.title;
             document.getElementById('view-content').textContent = e.content;
 
-            // score bar
             const bar = document.getElementById('view-score-bar');
             bar.innerHTML = '';
             for (let i = 1; i <= 9; i++) {
@@ -946,13 +916,11 @@
             } catch { showToast('Network error.', true); }
         }
 
-        // ── EDIT MODAL ────────────────────────────────────
-
         function openEditModal(id) {
             const e = allEntries.find(x => x.id === id);
             if (!e) return;
             editingId = id;
-            document.getElementById('modal-title-display').textContent = e.title;
+            document.getElementById('edit-title').value   = e.title;
             document.getElementById('edit-date').value    = e.date;
             document.getElementById('edit-content').value = e.content;
             setEditScore(e.score || 0);
@@ -965,15 +933,16 @@
         }
 
         async function saveEdit() {
+            const title   = document.getElementById('edit-title').value.trim();
             const date    = document.getElementById('edit-date').value.trim();
             const content = document.getElementById('edit-content').value.trim();
-            if (!date || !content || !editingId) return;
+            if (!title || !date || !content || !editingId) return;
 
             try {
                 const res = await fetch('/api/entries/' + editingId, {
                     method:  'PUT',
                     headers: { 'Content-Type': 'application/json' },
-                    body:    JSON.stringify({ date, content, score: editScore })
+                    body:    JSON.stringify({ date, title, content, score: editScore })
                 });
                 if (res.ok) {
                     closeEditModal();
@@ -988,8 +957,6 @@
 
         entryModal.addEventListener('click', e => { if (e.target === entryModal) closeEntryModal(); });
         editModal.addEventListener('click',  e => { if (e.target === editModal)  closeEditModal(); });
-
-        // ── UI ────────────────────────────────────────────
 
         function toggleComposer() {
             composerPanel.classList.toggle('open');
@@ -1007,8 +974,6 @@
                 }, 40);
             }, 500);
         }
-
-        // ── BOOT ─────────────────────────────────────────
 
         (function init() {
             const style = document.createElement('style');
